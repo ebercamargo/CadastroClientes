@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <aside>
+      <div class="brand">C<span>Clientes</span></div>
+      <small>GESTÃO DE RELACIONAMENTOS</small>
+      <nav>◉ &nbsp; Clientes</nav>
+      <p>Informações organizadas.<br />Relacionamentos mais próximos.</p>
+    </aside>
+    <main>
+      <header>
+        <div>
+          <span class="eyebrow">SUA BASE DE CONTATOS</span>
+          <h1>Clientes</h1>
+          <p>Organize contatos e mantenha seus cadastros atualizados.</p>
+        </div>
+        <button id="novo">+ Novo cliente</button>
+      </header>
+      <section class="card">
+        <div class="toolbar">
+          <div>
+            <h2>Lista de clientes</h2>
+            <span id="total">Carregando cadastros...</span>
+          </div>
+          <form id="filtros">
+            <input
+              id="busca"
+              aria-label="Buscar por nome ou e-mail"
+              placeholder="Buscar por nome ou e-mail"
+            /><select id="status" aria-label="Filtrar status">
+              <option value="">Todos os status</option>
+              <option value="true">Ativos</option>
+              <option value="false">Inativos</option></select
+            ><button type="submit" class="secondary">Buscar</button>
+          </form>
+        </div>
+        <p id="aviso" role="status" aria-live="polite"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Telefone</th>
+                <th>Cidade / UF</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="lista"></tbody>
+          </table>
+        </div>
+        <footer>
+          <span id="pagina"></span>
+          <div>
+            <button class="secondary" id="anterior">Anterior</button
+            ><button class="secondary" id="proxima">Próxima</button>
+          </div>
+        </footer>
+      </section>
+    </main>
+    <dialog id="modal">
+      <form id="cadastro">
+        <div class="dialog-header">
+          <div>
+            <span class="eyebrow">DADOS DO CLIENTE</span>
+            <h2 id="titulo">Novo cliente</h2>
+          </div>
+          <button
+            type="button"
+            class="secondary"
+            id="fechar"
+            aria-label="Fechar"
+          >
+            ✕
+          </button>
+        </div>
+        <p class="hint">Os campos com * são obrigatórios.</p>
+        <div class="grid">
+          <label class="wide"
+            >Nome completo *<input
+              name="nome"
+              required
+              maxlength="120"
+              autocomplete="name" /></label
+          ><label
+            >E-mail *<input
+              name="email"
+              type="email"
+              required
+              maxlength="180"
+              autocomplete="email" /></label
+          ><label
+            >Telefone *<input
+              name="telefone"
+              required
+              minlength="8"
+              maxlength="20"
+              placeholder="(11) 99999-9999"
+              autocomplete="tel" /></label
+          ><label class="wide"
+            >Endereço<input
+              name="endereco"
+              maxlength="200"
+              autocomplete="street-address" /></label
+          ><label
+            >Cidade<input
+              name="cidade"
+              maxlength="80"
+              autocomplete="address-level2" /></label
+          ><label
+            >UF<select name="uf">
+              <option value="">Selecione</option>
+            </select></label
+          ><label
+            >CEP<input
+              name="cep"
+              inputmode="numeric"
+              pattern="[0-9]{8}"
+              maxlength="8"
+              placeholder="Somente 8 números"
+              autocomplete="postal-code" /></label
+          ><label
+            >Situação<select name="ativo">
+              <option value="true">Ativo</option>
+              <option value="false">Inativo</option>
+            </select></label
+          >
+        </div>
+        <p id="erro" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" class="secondary" id="cancelar">Cancelar</button
+          ><button id="salvar">Salvar cliente</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

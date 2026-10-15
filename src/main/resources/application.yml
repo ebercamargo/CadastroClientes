@@ -1,0 +1,14 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/cadastro_clientes}
+    username: ${DB_USER:cadastro}
+    password: ${DB_PASSWORD:cadastro_local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  mvc:
+    problemdetails:
+      enabled: true
